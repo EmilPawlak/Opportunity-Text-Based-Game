@@ -1,0 +1,64 @@
+html {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  display: grid;
+  grid-template-columns: [l-body] 20% [l-cont] 60%[r-cont] 20%;
+  grid-template-rows: [t-body] 20% [t-cont] 60% [b-cont] 20%;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #202020;
+  color: #F5F5F5;
+  margin: 0;
+}
+h1 {
+  display: grid;
+  grid-column: l-cont / r-cont;
+  grid-row: t-body / t-cont;
+  place-self: center;
+
+  font-size: 5em;
+}
+p {
+  margin: 0;
+}
+.container {
+  grid-column: l-cont / r-cont;
+  grid-row: t-cont / b-cont;
+
+  display: grid;
+  grid-template-rows: [t-cont] 25% [b-cont] 75%;
+  background-color: #101010;
+  border: 0.3vw solid black;
+  padding: 1%;
+}
+.container__narration {
+  border-bottom: 0.1vw solid #F5F5F5;
+}
+.container__choices {
+  display: grid;
+  grid-template-rows: [t-choice-1] 20% [t-choice-2] 20% [t-choice-3] 20% [t-choice-4] 20% [t-choice-5] 20%;
+
+  padding-top: 1%;
+}
+#choice-1 {
+  grid-rows: 1 / 2;
+}
+#choice-2 {
+  grid-rows: t-choice-2 / t-choice-3;
+}
+#choice-3 {
+  grid-rows: t-choice-3 / t-choice-4;
+}
+#choice-4 {
+  grid-rows: t-choice-4 / t-choice-5;
+}
+#choice-5 {
+  grid-rows: t-choice-5 / t-choice-5;
+}
+#choice-1, #choice-2, #choice-3, #choice-4, #choice-5 {
+  border: 0.1vw solid #F5F5F5;
+  margin-bottom: 1%;
+}

@@ -20,6 +20,7 @@ h1 {
   place-self: center;
 
   font-size: 5em;
+  margin: 0;
 }
 p {
   margin: 0;
@@ -44,7 +45,7 @@ p {
   padding-top: 1%;
 }
 #choice-1 {
-  grid-rows: 1 / 2;
+  grid-rows: t-choice-1 / t-choice-2;
 }
 #choice-2 {
   grid-rows: t-choice-2 / t-choice-3;
@@ -60,5 +61,7 @@ p {
 }
 #choice-1, #choice-2, #choice-3, #choice-4, #choice-5 {
   border: 0.1vw solid #F5F5F5;
+  border-radius: 10px;
   margin-bottom: 1%;
+  padding: 0.25%;
 }

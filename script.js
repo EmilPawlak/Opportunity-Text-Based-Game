@@ -1,13 +1,14 @@
 "use strict";
 // Construktor, najważniejsza część gry
-function Scene(narration, choices) {
+function Scene(chapter, name, narration, choices) {
+  this.chapter = chapter;
+  this.name = name;
   this.narration = narration;
   this.choices = choices;
 };
 // Sceny, stworzone na bazie Construkltora, dzięki którym
 //wyświetlane są wybrane dane.
-const stage = new Scene("Witaj.", [ "Umm.. Witam?", "Cześć!", "c", "d", "e"]);
-
+var stage = new Scene(1, "Początek", "Znajdujesz się w ciemnym miejscu, czujesz że całe twoje ciało przeszywa tępy ból lecz przed sobą widzisz zupełną ciemnośc i pustkę.", [ "Próbuje się poruszyć", "Leże spokojnie"]);
 // Narracja
 const narr = document.getElementById("narration");
 narr.innerHTML = stage.narration;
@@ -22,3 +23,15 @@ const choiceHandler = stage.choices.forEach(element => {
   choice.innerHTML = element;
   choi.appendChild(choice);
 });
+// *clicking noises*
+debugger;
+choi.addEventListener("click", function(event) {
+  switch (event.target.id) {
+    case "choice-1":
+      stage = new Scene(12, "Przebudzenie", "Obudziłeś się..", ["Ale mnie wszystko boli.."]);
+      break;
+    case "choice-2":
+      stage = new Scene(12, "Przebudzenie2", "Obudziłeś się..2", ["Ale mnie wszystko boli..2"]);
+      break;
+  }
+}, false);

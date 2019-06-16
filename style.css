@@ -1,17 +1,16 @@
-html {
+html body {
   width: 100vw;
   height: 100vh;
 }
 body {
   display: grid;
-  grid-template-columns: [l-body] 20% [l-cont] 60%[r-cont] 20%;
-  grid-template-rows: [t-body] 20% [t-cont] 60% [b-cont] 20%;
+  grid-template-columns: [l-body] 20% [l-cont] 60%[r-cont] 20% [r-body];
+  grid-template-rows: [t-body] 20% [t-cont] 60% [b-cont] 20% [b-body];
 
-  width: 100vw;
-  height: 100vh;
-  background-color: #202020;
   color: #F5F5F5;
+  font-family: 'Almendra', serif;
   margin: 0;
+  background-color: #202020;
 }
 h1 {
   display: grid;
@@ -21,9 +20,20 @@ h1 {
 
   font-size: 5em;
   margin: 0;
+  z-index: 1;
+  user-select: none;
 }
 p {
   margin: 0;
+}
+.background {
+  grid-column: l-body / r-body;
+  grid-row: t-body / b-body;
+
+  background-size: 100vw 100vh;
+  filter: blur(3px);
+  opacity: 0.25;
+  animation: fadeIn 2s forwards;
 }
 .container {
   grid-column: l-cont / r-cont;
@@ -31,18 +41,29 @@ p {
 
   display: grid;
   grid-template-rows: [t-cont] 25% [b-cont] 75%;
+
+  opacity: 0.95;
   background-color: #101010;
   border: 0.3vw solid black;
-  padding: 1%;
+  padding: 2% 1% 1% 1%;
 }
 .container__narration {
   border-bottom: 0.1vw solid #F5F5F5;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
 }
 .container__choices {
   display: grid;
   grid-template-rows: [t-choice-1] 20% [t-choice-2] 20% [t-choice-3] 20% [t-choice-4] 20% [t-choice-5] 20%;
-
-  padding-top: 1%;
+  padding-top: 2%;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+@keyframes fadeIn {
+  100% {opacity: 1;}
+}
+@keyframes fadeOut {
+  100% {opacity: 0;}
 }
 #choice-1 {
   grid-rows: t-choice-1 / t-choice-2;
@@ -64,4 +85,5 @@ p {
   border-radius: 10px;
   margin-bottom: 1%;
   padding: 0.25%;
+  cursor: pointer;
 }

@@ -1,5 +1,4 @@
 "use strict";
-debugger;
 (function() {
   // Konstruktor Poziomów.
   function Scene(narration, choices, references, image,  music) {
@@ -10,14 +9,13 @@ debugger;
     this.music = music;
   };
   // Konstruktor Postaci.
-  function Character(name, profesion, special) {
+  function Character(name, profession) {
     this.name = name;
-    this.profesion = profesion;
-    this.special = special;
-  }
+    this.profession = profession;
+  };
   // System podmiany obiektów i wypisywania ich w odpowiedni sposób.
   const sceneSwap = function sceneSwap(stage){
-    // Zmienne narracji i wyborów.
+    debugger;
     const narr = document.getElementById("narration");
     const choi = document.getElementById("choices");
     // Wypisanie narracji.
@@ -29,6 +27,7 @@ debugger;
       choice.id = "choice-" + parseInt(stage.choices.indexOf(element) + 1);
       choice.innerHTML = element;
       // Przechodzenie między scenami dzięki wyborom.
+      debugger;
       choice.addEventListener("click", function() {
         sceneSwap(stage.references[parseInt(stage.choices.indexOf(element))]);
         // Animacje.
@@ -42,14 +41,13 @@ debugger;
           choi.clientTop;
           choi.style.animation = null;
           // Tla.
-          debugger;
           if (background.style.backgroundImage === 'url("images/' + image + '")') {
             return;
           };
           background.style.animation = "none";
           background.clientTop;
           background.style.animation = null;
-          // Header
+          // Header FadeOut po 1 oknie.
           const h1 = document.getElementsByTagName("h1")[0];
           h1.style.animation = "fadeOut 2s forwards";
         }
@@ -75,10 +73,33 @@ debugger;
   }
   // Sceny, w kolejności ODWROTNEJ z powodu czytania JS.
   // Mój syntax zapisywania nazw scen! (nazwaRozdzialu_numerSceny = ... (Narracja, Odpowiedzi, Odnośniki, Zdjęcia, Muzyka))
-  const poczatek_4 = new Scene("test", ["test"], [], "azaeir.jpg", "");
+  const poczatek_4 = new Scene("test", ["test"], [], "", "");
   const poczatek_3 = new Scene("W środku ciemności spędzasz dużo czasu, ale nie czujesz jego przeplywu. Zastanawiając się gdzie się znajdujesz powoli zauważasz że ból znika oraz odzyskujesz czucie w ciele", ["Postanawiam się poruszyć"], [] , "", "");
-  const poczatek_2 = new Scene("W trakcie wielkiemu bólu i męczarni jaką ci to sprawia z dala, oślepia cię szybko pojawiający się z daleka blask. Widzisz pewne twarze nad sobą oraz slyszysz galop koni, sylwetki zwrócily na ciebie uwage i podeszy bliżej cibie", ["Spróbuj się poruszyć"], [poczatek_4], "azaeir.jpg", "VillageConsort.mp3");
-  const poczatek_1 = new Scene("Znajdujesz się w ciemnym miejscu, nie możesz się poruszyć, czujesz że całe twoje ciało przeszywa tępy ból lecz przed sobą widzisz zupełną ciemnośc i pustkę.", ["Próbuje się poruszyć", "Pozostań dalej w ciemności"], [poczatek_2, poczatek_3], "wygnuncy.png", "");
-  // Rozpoczęcie gry.
-  sceneSwap(poczatek_1);
+  const poczatek_2 = new Scene("? Wonderful name, and what is your gender?", ["Boy", "Girl"], [poczatek_4], "", "VillageConsort.mp3");
+  // Zdobycie imienia postaci.
+  const askName = () => {
+    const name = document.getElementById("name").value;
+    // Sprawdzanie za niedozwolonymi charakterami.
+    var number = /\d/;
+    var special = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    if (name === "" ) {
+      document.getElementById("message").innerHTML = "Please, don't be shy.";
+      return;
+    } else if (number.test(name) === true) {
+      document.getElementById("message").innerHTML = "Bip-Bop-Beep.. No numbers";
+      return;
+    } else if (special.test(name) === true) {
+      document.getElementById("message").innerHTML = "I beg you, no fency symbols..";
+      return;
+    }
+    // Pozbyc się popupu.
+    document.getElementById("popup").style.animation = "fadeOutHard 2s forwards";
+    // Stworzyc postać.
+    const character = new Character(name, "Adventurer");
+    const poczatek_1 = new Scene(character.name + "? I really like this name, it's really nice", ["Thank you"], [poczatek_2, poczatek_3], "wygnuncy.png", "");
+    // Rozpoczęcie gry.
+    sceneSwap(poczatek_1);
+  }
+  const submit = document.getElementById("submit");
+  submit.addEventListener("click", askName);
 }());

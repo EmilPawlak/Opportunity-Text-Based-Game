@@ -50,7 +50,7 @@ p {
 .container__narration {
   border-bottom: 0.1vw solid #F5F5F5;
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  animation: fadeIn 2s forwards; 
 }
 .container__choices {
   display: grid;
@@ -59,11 +59,35 @@ p {
   opacity: 0;
   animation: fadeIn 2s forwards;
 }
+.popup {
+  display: grid;
+  grid-column: l-body / r-body;
+  grid-row: t-body / b-body;
+  grid-template-rows: 25% 25% 25% 25%;
+
+  background-color: black;
+  opacity: 0.90;
+  z-index: 2;
+}
+.popup__window {
+  grid-row: 2 / 3;
+
+  text-align: center;
+  border: 0.3vw solid black;
+  opacity: 0;
+  animation: fadeIn 5s forwards;
+}
+input {
+  font-family: 'Almendra', serif;
+}
 @keyframes fadeIn {
   100% {opacity: 1;}
 }
 @keyframes fadeOut {
   100% {opacity: 0;}
+}
+@keyframes fadeOutHard {
+  100% {visibility: hidden; opacity: 0;}
 }
 #choice-1 {
   grid-rows: t-choice-1 / t-choice-2;

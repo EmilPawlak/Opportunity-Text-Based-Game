@@ -15,7 +15,6 @@
   };
   // System podmiany obiektów i wypisywania ich w odpowiedni sposób.
   const sceneSwap = function sceneSwap(stage){
-    debugger;
     const narr = document.getElementById("narration");
     const choi = document.getElementById("choices");
     // Wypisanie narracji.
@@ -27,7 +26,6 @@
       choice.id = "choice-" + parseInt(stage.choices.indexOf(element) + 1);
       choice.innerHTML = element;
       // Przechodzenie między scenami dzięki wyborom.
-      debugger;
       choice.addEventListener("click", function() {
         sceneSwap(stage.references[parseInt(stage.choices.indexOf(element))]);
         // Animacje.
@@ -80,16 +78,40 @@
   const askName = () => {
     const name = document.getElementById("name").value;
     // Sprawdzanie za niedozwolonymi charakterami.
-    var number = /\d/;
-    var special = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    const number = /\d/;
+    const special = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    // Iteracja i Easter Eggi (nie mogem dać kodu do zmiennej).
+    debugger;
     if (name === "" ) {
-      document.getElementById("message").innerHTML = "Please, don't be shy.";
+      document.getElementById("message") = "Please, don't be shy.";
       return;
     } else if (number.test(name) === true) {
-      document.getElementById("message").innerHTML = "Bip-Bop-Beep.. No numbers";
+      document.getElementById("message").innerHTML = "Bip-Bop-Beep.. No numbers.";
       return;
     } else if (special.test(name) === true) {
       document.getElementById("message").innerHTML = "I beg you, no fency symbols..";
+      return;
+    // Easter Eggi.
+    } else if (name === "Azaeir") {
+      document.getElementById("message").innerHTML = "Eternal orphan.";
+      return;
+    } else if (name === "Serrit") {
+      document.getElementById("message").innerHTML = "This name is already taken."
+      return;
+    } else if (name === "Caed") {
+      document.getElementById("message").innerHTML = "Where?";
+      return;
+    } else if (name === "Radagast") {
+      document.getElementById("message").innerHTML = "You can't use multiple names.";
+      return;
+    } else if (name === "Rada") {
+      document.getElementById("message").innerHTML = "Congratulations, I hope you're proud of yourself. Smartass.";
+      return;
+    } else if (name === "Gast") {
+      document.getElementById("message").innerHTML = "Yes, it works too, you really didn't have to check.";
+      return;
+    } else if (name === "Aiden") {
+      document.getElementById("message").innerHTML = 'Error: "id" of text input "name" is empty.';
       return;
     }
     // Pozbyc się popupu.

@@ -71,9 +71,14 @@
   }
   // Sceny, w kolejności ODWROTNEJ z powodu czytania JS.
   // Mój syntax zapisywania nazw scen! (nazwaRozdzialu_numerSceny = ... (Narracja, Odpowiedzi, Odnośniki, Zdjęcia, Muzyka))
-  const poczatek_4 = new Scene("test", ["test"], [], "", "");
-  const poczatek_3 = new Scene("W środku ciemności spędzasz dużo czasu, ale nie czujesz jego przeplywu. Zastanawiając się gdzie się znajdujesz powoli zauważasz że ból znika oraz odzyskujesz czucie w ciele", ["Postanawiam się poruszyć"], [] , "", "");
-  const poczatek_2 = new Scene("? Wonderful name, and what is your gender?", ["Boy", "Girl"], [poczatek_4], "", "VillageConsort.mp3");
+  const begenning_ = new Scene("", [], [], "", "");
+  const begenning_8 = new Scene("", [], [], "", "");
+  const begenning_7 = new Scene("", [], [], "", "");
+  const begenning_6 = new Scene("As I told you before, I don't have a phisical form, so I can't stay in one place for a long time. Im drifting through space and time endlessly as a result of my actions, but at this moment I'm here with you, and you seem to be intrigued by my appearance. Look, lost one. I miss my world, my home, and everyone I left there. But I really would like to show you how living there is, because if I can't go there.. I can at least give you a taste of it. And don't worry, it's permament. So, after our unusual meeting, Would you like to see my world?", ["Yes", "No"], [begenning_8, begenning_9], "", "");
+  const begenning_5 = new Scene("", [], [], "", "");
+  const begenning_4 = new Scene("Ahh, bravery, that's a good trait, but It can lead to a lot of pain, but Im drifting out of topic. As you might guessed, Im not from here, not from your world. In matter of fact I dont exist anymore, at least not in physical definition of existance. But when I was alive, I lived in a.. Wonderful.. wild, living world.. As Im thinking now about it, It was really one of a kind.", ["Why are you telling me this?", "Just get to the point already."], [begenning_6, begenning_5], "", "");
+  const begenning_3 = new Scene("Ahh, curiosity, that's a good trait, knowladge can open every door.. Or at least most of them.. But Im drifting out of topic. As you might guessed, Im not from here, not from your world. In matter of fact I dont exist anymore, at least not in physical definition of existance. But when I was alive, I lived in a.. Wonderful.. wild, living world.. As Im thinking now about it, It was really one of a kind.", ["Why are you telling me this?", "Im sorry to hear.. Can you tell me more about your world?", "Just get to the point already."], [begenning_7, begenning_6, begenning_5] , "", "");
+  const begenning_2 = new Scene("I understand you can be a bit confused right now, my identity doesn't matter, and don't be afraid of me lost one, I do not want to harm you.", ["What is happening?", "Im not scared of you"], [begenning_3, begenning_4], "", "");
   // Zdobycie imienia postaci.
   const askName = () => {
     const name = document.getElementById("name").value;
@@ -118,9 +123,9 @@
     document.getElementById("popup").style.animation = "fadeOutHard 2s forwards";
     // Stworzyc postać.
     const character = new Character(name, "Adventurer");
-    const poczatek_1 = new Scene(character.name + "? I really like this name, it's really nice", ["Thank you"], [poczatek_2, poczatek_3], "wygnuncy.png", "");
+    const begenning_1 = new Scene(character.name + "? I really like this name, it's really nice. Anyway, Im glad to meet you nonetheless", ["Umm.. Thank you?", "Who are you?"], [begenning_2, begenning_2], "wygnuncy.png", "");
     // Rozpoczęcie gry.
-    sceneSwap(poczatek_1);
+    sceneSwap(begenning_1);
   }
   const submit = document.getElementById("submit");
   submit.addEventListener("click", askName);
